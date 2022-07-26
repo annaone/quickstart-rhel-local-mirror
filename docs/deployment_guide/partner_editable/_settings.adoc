@@ -1,9 +1,9 @@
 :quickstart-project-name: quickstart-rhel-local-mirror
 :quickstart-github-org: aws-quickstart
-:partner-product-name: Local mirror of the latest update for Red Hat Enterprise Linux 8
-:partner-product-short-name: RHEL 8 Local Mirror
-:partner-company-name: Red Hat Inc.
-:doc-month: June
+:partner-product-name: Red Hat Enterprise Linux 8 local mirror
+:partner-product-short-name: Red Hat Enterprise Linux 8 local mirror
+:partner-company-name: Red Hat
+:doc-month: July
 :doc-year: 2022
 // :partner-contributors: John Smith, {partner-company-name}
 // :other-contributors: Akua Mansa, Trek10

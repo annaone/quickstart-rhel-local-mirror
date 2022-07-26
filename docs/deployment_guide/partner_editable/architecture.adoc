@@ -7,19 +7,17 @@ AWS Cloud.
 
 [#architecture1]
 .Quick Start architecture for {partner-product-short-name} on AWS
-image::../docs/deployment_guide/images/architecture_diagram.png[Architecture]
+image::../docs/deployment_guide/images/rhel8-local-mirror-architecture-diagram.png[Architecture]
 
 As shown in <<architecture1>>, this Quick Start sets up the following:
 
 * A highly available architecture that spans two Availability Zones.*
 * A virtual private cloud (VPC) configured with public and private subnets, according to AWS
 best practices, to provide you with your own virtual network on AWS.*
-* In the public subnets:
-** Managed network address translation (NAT) gateways to allow outbound
+* In the public subnets, managed network address translation (NAT) gateways to allow outbound
 internet access for resources in the private subnets.*
-* In the private subnets:
-** An Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the {partner-product-short-name}.
-** Optionally, an Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the client that points to the {partner-product-short-name} for updates or package installations.
+* In the private subnets, an Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the Red Hat Enterprise Linux 8 local mirror.
+* AWS Systems Manager Agent installed on the local mirror to facilitate system updates.
 // Add bullet points for any additional components that are included in the deployment. Ensure that the additional components are shown in the architecture diagram. End each bullet with a period.
 
 [.small]#* The template that deploys this Quick Start into an existing VPC skips the components marked by asterisks and prompts you for your existing VPC configuration.#

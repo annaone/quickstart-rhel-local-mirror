@@ -1,4 +1,8 @@
-This Quick Start deploys {partner-product-name} on the AWS Cloud. If you are unfamiliar with AWS Quick Starts, refer to the https://fwd.aws/rA69w?[AWS Quick Start General Information Guide^].
+This Quick Start deploys {partner-product-name} on the AWS Cloud. It's for system administrators and IT engineers who manage and distribute updates and package installations from a Red Hat central repository to a group of Red Hat servers.
+
+This Quick Start deploys a single Amazon Elastic Compute Cloud (Amazon EC2) instance that's configured as a Red Hat Enterprise Linux 8 local mirror. You can download updates from Red Hat's central repository directly to the local mirror and then manage and distribute those updates to the rest of your organization's Red Hat servers using the AWS Management Console. Downloading updates to the local mirror eliminates the need to download updates to individual Red Hat servers, saving bandwidth and helping ensure high availability.
+
+If you're unfamiliar with AWS Quick Starts, refer to the https://fwd.aws/rA69w?[AWS Quick Start General Information Guide^].
 
 // For advanced information about the product that this Quick Start deploys, refer to the https://{quickstart-github-org}.github.io/{quickstart-project-name}/operational/index.html[Operational Guide^].
 
