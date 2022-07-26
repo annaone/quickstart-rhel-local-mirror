@@ -36,6 +36,8 @@ sudo dnf repolist
 .List repositories within the {partner-product-short-name} client on AWS
 image::../docs/deployment_guide/images/repo_list.png[repolist]
 +
+
+[start=g]
 .. Install a package and verify that it pulls from the {partner-product-short-name}.
 +
 ```
