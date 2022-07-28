@@ -1,4 +1,4 @@
-## RHEL 8 Local Mirror Quick Start
+## Red Hat Enterprise Linux 8 Local Mirror Quick Start
 
 For architectural details, step-by-step instructions, and customization options, see the [deployment guide](https://aws-quickstart.github.io/quickstart-rhel-local-mirror/).
 
