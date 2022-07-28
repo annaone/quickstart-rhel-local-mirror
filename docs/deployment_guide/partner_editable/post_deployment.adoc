@@ -46,4 +46,4 @@ sudo dnf install git -y
 +
 [#installpackage]
 .Install package in the {partner-product-short-name} client on AWS
-image::../docs/deployment_guide/images/install_package.png[installpackage]
+image::../docs/deployment_guide/images/install_package1.png[installpackage]
