@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.15">
-<meta name="description" content="Local mirror of the latest update for Red Hat Enterprise Linux 8 Deployment Guide on AWS">
-<meta name="keywords" content="Quick Start, AWS, Local mirror of the latest update for Red Hat Enterprise Linux 8">
-<title>Local mirror of the latest update for Red Hat Enterprise Linux 8 on the AWS Cloud</title>
+<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="description" content="Red Hat Enterprise Linux 8 local mirror Deployment Guide on AWS">
+<meta name="keywords" content="Quick Start, AWS, Red Hat Enterprise Linux 8 local mirror">
+<title>Red Hat Enterprise Linux 8 local mirror on the AWS Cloud</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
 /* Uncomment @import statement to use as custom stylesheet */
@@ -750,8 +750,7 @@ p {
 
 /* image layout */
 #toc.toc2 #toctitle {
-  /* Do not change! This link is intended to be broken for non-production builds. */
-  background-image: url("images/AWS-Logo.svg");
+  background-image: url("docs/boilerplate/.images/AWS-Logo.svg");
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center;
@@ -816,6 +815,26 @@ a img {
   background:#ffffb3;
 }
 
+.watermark {
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  color:#00f;
+  cursor: default;
+  display: block;
+  font-size: 400px;
+  font-weight: 1000;
+  margin: 0;
+  opacity:0.05;
+  top: 30%;
+  position: fixed;
+  text-align: center;
+  transform: rotate(-30deg);
+  user-select: none;
+  z-index: -1;
+}
+
 .footer-text{color:rgba(255,255,255,.8);line-height:1.44;background:#1c222a;padding:1.25em;max-width:100%;margin-bottom:unset}
 p.footer-text a{color:#d7d8d8}
 
@@ -824,7 +843,7 @@ p.footer-text a{color:#d7d8d8}
 .image-container img {
   width: 1px;
   height: 1px;
-  } 
+  }
 /* END dummy image */
 
 </style>
@@ -840,12 +859,7 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_architecture">Architecture</a></li>
 <li><a href="#_deployment_options">Deployment options</a></li>
 <li><a href="#_deployment_steps">Deployment steps</a></li>
-<li><a href="#_postdeployment_steps">Postdeployment steps</a>
-<ul class="sectlevel2">
-<li><a href="#_verify_that_the_remote_repositories_are_loaded_on_the_local_mirror">Verify that the remote repositories are loaded on the local mirror</a></li>
-<li><a href="#_optional_deploy_a_rhel_8_client_that_installs_updates_or_packages_from_the_local_mirror">Optional: Deploy a RHEL 8 client that installs updates or packages from the local mirror</a></li>
-</ul>
-</li>
+<li><a href="#_postdeployment_steps">Postdeployment steps</a></li>
 <li><a href="#_troubleshooting">Troubleshooting</a></li>
 <li><a href="#_feedback">Feedback</a></li>
 <li><a href="#_notices">Notices</a></li>
@@ -855,24 +869,24 @@ p.footer-text a{color:#d7d8d8}
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<h2 id="_local_mirror_of_the_latest_update_for_red_hat_enterprise_linux_8_on_the_aws_cloud" class="discrete text-center">Local mirror of the latest update for Red Hat Enterprise Linux 8 on the AWS Cloud</h2>
+<h2 id="_red_hat_enterprise_linux_8_local_mirror_on_the_aws_cloud" class="discrete text-center">Red Hat Enterprise Linux 8 local mirror on the AWS Cloud</h2>
 <h2 id="_quick_start_deployment_guide" class="discrete text-left text-center">Quick Start Deployment Guide</h2>
 <div class="imageblock text-center">
 <div class="content">
 <img src="https://aws-quickstart.s3.amazonaws.com/docs/deployment-guide/aws-quickstart-deployment-graphic.png" alt="QS" width="80" height="80">
 </div>
 </div>
-<div class="imageblock image-container">
+<div class="paragraph text-center">
+<p><strong>July 2022</strong><br>
+<em>Glenn Chia, AWS Professional Services</em><br>
+<em>Dave May, AWS Integration &amp; Automation team</em><br></p>
+</div>
+<div class="imageblock text-left image-container">
 <div class="content">
 <img src="https://aws-quickstart.s3.amazonaws.com/quickstart-rhel-local-mirror/docs/boilerplate/.images/aws-quickstart-graphic.png" alt="">
 </div>
 </div>
-<div class="paragraph text-center">
-<p><strong>June 2022</strong><br>
-<em>Glenn Chia, AWS Professional Services</em><br>
-<em>Dave May, AWS Integration &amp; Automation team</em><br></p>
-</div>
-<div class="admonitionblock tip text-left">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
@@ -885,7 +899,7 @@ Refer to the <a href="https://github.com/aws-quickstart/quickstart-rhel-local-mi
 </table>
 </div>
 <div class="paragraph text-left">
-<p>This Quick Start was created by Red Hat Inc. in collaboration with Amazon Web Services (AWS). <a href="http://aws.amazon.com/quickstart/" target="_blank" rel="noopener">Quick Starts</a> are automated reference deployments that help people deploy popular technologies on AWS according to AWS best practices.</p>
+<p>This Quick Start was created by Red Hat in collaboration with Amazon Web Services (AWS). <a href="http://aws.amazon.com/quickstart/" target="_blank" rel="noopener">Quick Starts</a> are automated reference deployments that help people deploy popular technologies on AWS according to AWS best practices. If you&#8217;re unfamiliar with AWS Quick Starts, refer to the <a href="https://fwd.aws/rA69w?" target="_blank" rel="noopener">AWS Quick Start General Information Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -893,7 +907,13 @@ Refer to the <a href="https://github.com/aws-quickstart/quickstart-rhel-local-mi
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This Quick Start deploys Local mirror of the latest update for Red Hat Enterprise Linux 8 on the AWS Cloud. If you are unfamiliar with AWS Quick Starts, refer to the <a href="https://fwd.aws/rA69w?" target="_blank" rel="noopener">AWS Quick Start General Information Guide</a>.</p>
+<p>This Quick Start deploys Red Hat Enterprise Linux 8 local mirror on the AWS Cloud. It&#8217;s for system administrators and IT engineers who manage and distribute updates and package installations from a Red Hat central repository to a group of Red Hat servers.</p>
+</div>
+<div class="paragraph">
+<p>This Quick Start deploys a single Amazon Elastic Compute Cloud (Amazon EC2) instance that&#8217;s configured as a Red Hat Enterprise Linux 8 local mirror. You can download updates from Red Hat&#8217;s central repository directly to the local mirror and then distribute those updates to the rest of your organization&#8217;s Red Hat servers. Downloading updates to the local mirror eliminates the need to download updates to individual Red Hat servers, saving bandwidth and helping ensure high availability.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re unfamiliar with AWS Quick Starts, refer to the <a href="https://fwd.aws/rA69w?" target="_blank" rel="noopener">AWS Quick Start General Information Guide</a>.</p>
 </div>
 </div>
 </div>
@@ -909,14 +929,14 @@ Refer to the <a href="https://github.com/aws-quickstart/quickstart-rhel-local-mi
 <h2 id="_architecture">Architecture</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Deploying this Quick Start with default parameters builds the following RHEL 8 Local Mirror environment in the
+<p>Deploying this Quick Start with default parameters builds the following Red Hat Enterprise Linux 8 local mirror environment in the
 AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
-<img src="docs/deployment_guide/images/architecture_diagram.png" alt="Architecture">
+<img src="docs/deployment_guide/images/rhel8-local-mirror-architecture-diagram.png" alt="Architecture">
 </div>
-<div class="title">Figure 1. Quick Start architecture for RHEL 8 Local Mirror on AWS</div>
+<div class="title">Figure 1. Quick Start architecture for Red Hat Enterprise Linux 8 local mirror on AWS</div>
 </div>
 <div class="paragraph">
 <p>As shown in <a href="#architecture1">Figure 1</a>, this Quick Start sets up the following:</p>
@@ -931,28 +951,14 @@ AWS Cloud.</p>
 best practices, to provide you with your own virtual network on AWS.*</p>
 </li>
 <li>
-<p>In the public subnets:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed network address translation (NAT) gateways to allow outbound
+<p>In the public subnets, managed network address translation (NAT) gateways to allow outbound
 internet access for resources in the private subnets.*</p>
 </li>
-</ul>
-</div>
+<li>
+<p>In the private subnets, an Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the Red Hat Enterprise Linux 8 local mirror.</p>
 </li>
 <li>
-<p>In the private subnets:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>An Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the RHEL 8 Local Mirror.</p>
-</li>
-<li>
-<p>Optionally, an Amazon Elastic Compute Cloud (Amazon EC2) instance configured as the client that points to the RHEL 8 Local Mirror for updates or package installations.</p>
-</li>
-</ul>
-</div>
+<p>AWS Systems Manager Agent installed on the local mirror to facilitate system updates.</p>
 </li>
 </ul>
 </div>
@@ -970,15 +976,15 @@ internet access for resources in the private subnets.*</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy RHEL 8 Local Mirror into a new VPC</a>. This option builds a new AWS environment that consists of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys RHEL 8 Local Mirror into this new VPC.</p>
+<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy Red Hat Enterprise Linux 8 local mirror into a new VPC</a>. This option builds a new AWS environment that consists of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys Red Hat Enterprise Linux 8 local mirror into this new VPC.</p>
 </li>
 <li>
-<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy RHEL 8 Local Mirror into an existing VPC</a>. This option provisions RHEL 8 Local Mirror in your existing AWS infrastructure.</p>
+<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy Red Hat Enterprise Linux 8 local mirror into an existing VPC</a>. This option provisions Red Hat Enterprise Linux 8 local mirror in your existing AWS infrastructure.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>This Quick Start provides separate templates for these options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, and RHEL 8 Local Mirror settings.</p>
+<p>This Quick Start provides separate templates for these options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, and Red Hat Enterprise Linux 8 local mirror settings.</p>
 </div>
 </div>
 </div>
@@ -1015,13 +1021,13 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 <p>On the <strong>Configure stack options</strong> page, you can <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html" target="_blank" rel="noopener">specify tags</a> (key-value pairs) for resources in your stack and <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-add-tags.html" target="_blank" rel="noopener">set advanced options</a>. When you finish, choose <strong>Next</strong>.</p>
 </li>
 <li>
-<p>On the <strong>Review</strong> page, review and confirm the template settings. Under <strong>Capabilities</strong>, select the two check boxes to acknowledge that the template creates IAM resources that might require the ability to automatically expand macros.</p>
+<p>On the <strong>Review</strong> page, review and confirm the template settings. Under <strong>Capabilities</strong>, select all of the check boxes to acknowledge that the template creates IAM resources that might require the ability to automatically expand macros.</p>
 </li>
 <li>
 <p>Choose <strong>Create stack</strong> to deploy the stack.</p>
 </li>
 <li>
-<p>Monitor the stack&#8217;s status, and when the status is <strong>CREATE_COMPLETE</strong>, the Local mirror of the latest update for Red Hat Enterprise Linux 8 deployment is ready.</p>
+<p>Monitor the stack&#8217;s status, and when the status is <strong>CREATE_COMPLETE</strong>, the Red Hat Enterprise Linux 8 local mirror deployment is ready.</p>
 </li>
 <li>
 <p>To view the created resources, choose the <strong>Outputs</strong> tab.</p>
@@ -1033,24 +1039,29 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 <div class="sect1">
 <h2 id="_postdeployment_steps">Postdeployment steps</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_verify_that_the_remote_repositories_are_loaded_on_the_local_mirror">Verify that the remote repositories are loaded on the local mirror</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running" target="_blank" rel="noopener">EC2 Console</a></p>
+<p>Verify that the remote repositories are loaded on the local mirror</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Open the <a href="https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running" target="_blank" rel="noopener">Amazon EC2 console</a></p>
 </li>
 <li>
 <p>From the navigation bar, choose the AWS Region you used for the Quick Start deployment.</p>
 </li>
 <li>
-<p>Select the checkbox next to the <strong>rhel8-local-mirror</strong> EC2 instance and choose <strong>Connect</strong>.</p>
+<p>Select the check box next to the <strong>rhel8-local-mirror</strong> EC2 instance and choose <strong>Connect</strong>.</p>
 </li>
 <li>
-<p>Choose the <strong>Session Manager</strong> tab and choose <strong>Connect</strong>.</p>
+<p>Open the <strong>Session Manager</strong> tab and choose <strong>Connect</strong>.</p>
 </li>
 <li>
-<p>Once connected, run the following command to verify that the repositories are loaded into the local mirror</p>
+<p>Once connected, run the following command to verify that the repositories are loaded into the local mirror:</p>
+</li>
+</ol>
+</div>
 </li>
 </ol>
 </div>
@@ -1063,30 +1074,31 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 <div class="content">
 <img src="docs/deployment_guide/images/local_mirror_repositories.png" alt="localmirrorrepositories">
 </div>
-<div class="title">Figure 2. Local mirror repositories within the RHEL 8 Local Mirror on AWS</div>
+<div class="title">Figure 2. Local mirror repositories within the Red Hat Enterprise Linux 8 local mirror on AWS</div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_optional_deploy_a_rhel_8_client_that_installs_updates_or_packages_from_the_local_mirror">Optional: Deploy a RHEL 8 client that installs updates or packages from the local mirror</h3>
 <div class="olist arabic">
-<ol class="arabic">
+<ol class="arabic" start="2">
 <li>
-<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy RHEL 8 Local Mirror client in the same VPC</a>. This option provisions an EC2 instance in the same VPC as the RHEL 8 Local Mirror EC2 instance. This EC2 instance is configured to install packages from the RHEL 8 Local Mirror EC2 instance.</p>
+<p>(Optional) Deploy a Red Hat Enterprise Linux 8 client that installs updates or packages from the local mirror:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="http://qs_launch_permalink" target="_blank" rel="noopener">Deploy Red Hat Enterprise Linux 8 local mirror client in the same VPC</a>. This option provisions an EC2 instance in the same VPC as the Red Hat Enterprise Linux 8 local mirror EC2 instance. This EC2 instance is configured to install packages from the Red Hat Enterprise Linux 8 local mirror EC2 instance.</p>
 </li>
 <li>
-<p>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running" target="_blank" rel="noopener">EC2 Console</a></p>
+<p>Open the <a href="https://console.aws.amazon.com/ec2/v2/home#Instances:instanceState=running" target="_blank" rel="noopener">Amazon EC2 console</a></p>
 </li>
 <li>
 <p>From the navigation bar, choose the AWS Region you used for the Quick Start deployment.</p>
 </li>
 <li>
-<p>Select the checkbox next to the <strong>rhel8-local-mirror-client</strong> EC2 instance and choose <strong>Connect</strong>.</p>
+<p>Select the check box next to the <strong>rhel8-local-mirror-client</strong> EC2 instance and choose <strong>Connect</strong>.</p>
 </li>
 <li>
-<p>Choose the <strong>Session Manager</strong> tab and choose <strong>Connect</strong>.</p>
+<p>Open the <strong>Session Manager</strong> tab, and choose <strong>Connect</strong>.</p>
 </li>
 <li>
-<p>Once connected, run the following command to verify that the client is configured to install packages from the RHEL 8 Local Mirror.</p>
+<p>Once connected, run the following command to verify that the client is configured to install packages from the Red Hat Enterprise Linux 8 local mirror.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>sudo dnf repolist</code></pre>
@@ -1096,11 +1108,11 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 <div class="content">
 <img src="docs/deployment_guide/images/repo_list.png" alt="repolist">
 </div>
-<div class="title">Figure 3. List repositories within the RHEL 8 Local Mirror client on AWS</div>
+<div class="title">Figure 3. List repositories within the Red Hat Enterprise Linux 8 local mirror client on AWS</div>
 </div>
 </li>
 <li>
-<p>Install a package and verify that it pulls from the RHEL 8 Local Mirror.</p>
+<p>Install a package and verify that it pulls from the Red Hat Enterprise Linux 8 local mirror.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>sudo dnf install git -y</code></pre>
@@ -1108,13 +1120,15 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 </div>
 <div id="installpackage" class="imageblock">
 <div class="content">
-<img src="docs/deployment_guide/images/install_package.png" alt="installpackage">
+<img src="docs/deployment_guide/images/install_package1.png" alt="installpackage">
 </div>
-<div class="title">Figure 4. Install package in the RHEL 8 Local Mirror client on AWS</div>
+<div class="title">Figure 4. Install package in the Red Hat Enterprise Linux 8 local mirror client on AWS</div>
 </div>
 </li>
 </ol>
 </div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -1165,9 +1179,9 @@ Unless you are customizing the Quick Start templates for your own projects, don&
 <footer>
     <p class="footer-text">
         <!-- We can use document attributes: -->
-        <!-- Generated with Asciidoctor v2.0.15. -->
+        <!-- Generated with Asciidoctor v2.0.17. -->
         <a href="https://aws.amazon.com/privacy/">Privacy</a> | <a href="https://aws.amazon.com/terms/">Site terms</a> |
-        &copy; 2022, Amazon Web Services, Inc. or its affiliates and Red Hat Inc.. All rights reserved.
+        &copy; 2022, Amazon Web Services, Inc. or its affiliates and Red Hat. All rights reserved.
     </p>
 </footer>
 </body>
