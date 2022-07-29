@@ -2,7 +2,8 @@
 
 This Quick Start provides the following deployment options:
 
-* http://qs_launch_permalink[Deploy {partner-product-short-name} into a new VPC^]. This option builds a new AWS environment that consists of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys {partner-product-short-name} into this new VPC.
-* http://qs_launch_permalink[Deploy {partner-product-short-name} into an existing VPC^]. This option provisions {partner-product-short-name} in your existing AWS infrastructure.
+* https://fwd.aws/K8zym?[Deploy {partner-product-short-name} into a new VPC^]. This option builds a new AWS environment that consists of the VPC, subnets, NAT gateways, security groups, and other infrastructure components. It then deploys {partner-product-short-name} into this new VPC.
+* https://fwd.aws/NKG8q?[Deploy {partner-product-short-name} into an existing VPC^]. This option provisions {partner-product-short-name} in your existing AWS infrastructure.
+* https://fwd.aws/44wpg?[Deploy {partner-product-short-name} in the same VPC^]. This option provisions an EC2 instance in the same VPC as the {partner-product-short-name} EC2 instance. This EC2 instance is configured to install packages from the {partner-product-short-name} EC2 instance.
 
 This Quick Start provides separate templates for these options. It also lets you configure Classless Inter-Domain Routing (CIDR) blocks, instance types, and {partner-product-short-name} settings.
